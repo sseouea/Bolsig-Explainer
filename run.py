@@ -1,10 +1,5 @@
-from DFmanager import *
+from gui import *
 
-if __name__ == '__main__':
-    inputPath = './input/input.txt'
-    outputPath = './output'
-
-    manager = DFmanager()
-    manager.setFilePath(inputPath)
-    manager.setSavePath(outputPath)
-    manager.saveDF()
+if __name__ == "__main__":
+    program = Program()
+    program.mainloop()

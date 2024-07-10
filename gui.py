@@ -171,7 +171,3 @@ class Program(tk.Tk):
             self.generate.pack_forget()
         self.finish = Finish(self)
         self.finish.pack(fill='both', expand=True)
-
-if __name__ == "__main__":
-    program = Program()
-    program.mainloop()
