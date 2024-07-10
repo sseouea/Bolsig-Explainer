@@ -51,6 +51,14 @@ class DFmanager:
         self.optionDF, self.countDF = makeOptionAndCountDF(self.originDF)
         return True
     
+    def getCountDF(self):
+        if self.filePath == None:
+            return 'No file'
+        if self.countDF is None:
+            self.setOptionAndCountDF()
+
+        return self.countDF
+    
     def setChoosedDF(self, choosedID=None):
         if self.filePath == None:
             return 'No file'

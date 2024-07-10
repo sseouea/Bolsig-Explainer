@@ -21,7 +21,7 @@ class Generate(tk.Frame):
     def __init__(self, parent, manager, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
         self.manager = manager
-        self.label = tk.Label(self, text="Generating the file. Please wait a moment", fg='white')
+        self.label = tk.Label(self, text="Generating the file\n Please wait a moment", fg='white')
         self.label.pack()
 
         self.manager.saveDF()
