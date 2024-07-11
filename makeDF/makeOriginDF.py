@@ -1,10 +1,15 @@
 import pandas as pd
+import platform
 
 def makeOriginDF(filePath):
     state = ['ELASTIC', 'EFFECTIVE', 'MOMENTUM', 'IONIZATION', 'ATTACHMENT', 'EXCITATION']
     columns = ['state', 'equation', 'value', 'species', 'process', 'param.', 'comment', 'updated']
 
-    f = open(filePath, 'r')
+    if (platform.system() == 'Windows'):
+        f = open(filePath, 'r', encoding='utf-8')
+    else:
+        f = open(filePath, 'r')
+
     data = {c : list() for c in columns}
 
     lines = f.readlines()
