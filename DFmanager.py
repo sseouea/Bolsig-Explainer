@@ -12,7 +12,15 @@ class DFmanager:
         self.optionDF = None
         self.choosedDF = None
 
+    def getFilePath(self):
+        return self.filePath
+    
+    def getSavePath(self):
+        return self.savePath
+
     def setFilePath(self, path):
+        change = True if self.filePath != None else False
+
         if not os.path.exists(path):
             return 'No file'
         
@@ -23,16 +31,18 @@ class DFmanager:
             _path = _path + '.txt'
             os.rename(path, _path)
             self.filePath = _path
-            return True
         elif ext == 'txt':
             self.filePath = path
-            return True
         else:
             return 'Dismatched file extension'
         
+        if change == True:
+            self.setOriginDF()
+            self.setOptionAndCountDF()
+        return True
+        
     def setSavePath(self, path):
-        os.makedirs(path, exist_ok=True)
-        self.savePath = path + '/' + '.'.join(self.filePath.split('/')[-1].split('.')[:-1])
+        self.savePath = path
         return True
         
     def setOriginDF(self):
@@ -72,6 +82,7 @@ class DFmanager:
     
     def saveDF(self, type='all'):
         filePath = self.savePath
+        os.makedirs('/'.join(filePath.split('/')[:-1]), exist_ok=True)
 
         if type == 'origin' or type == 'all':
             if self.originDF is None: self.setOriginDF()
