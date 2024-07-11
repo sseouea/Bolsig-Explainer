@@ -204,12 +204,13 @@ class FileSelect(tk.Frame):
         self.button2.grid(column=1, ipadx=40, padx=10, pady=40)
 
     def selectFile(self):
-        self.file = filedialog.askopenfile(
+        _file = filedialog.askopenfile(
             initialdir=f'{os.getcwd()}',
             title='Select input file (.txt .dat)',
             filetypes=(('txt files', '*.txt'), ('dat files', '*.dat'))
         )
-        if self.file:
+        if _file:
+            self.file = _file
             self.label2.configure(text=f'input file: {self.file.name}')
             self.master.manager.setFilePath(self.file.name)
         
