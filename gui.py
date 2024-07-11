@@ -18,10 +18,10 @@ class Finish(tk.Frame):
 
         button_width = 5
 
-        self.button1 = tk.Button(self.button_frame, text='Select', font=12, fg='black', highlightbackground='#262626', width=button_width, command=self.master.showFileSelect)
+        self.button1 = tk.Button(self.button_frame, text='Select', height=1, font=12, fg='black', highlightbackground='#262626', width=button_width, command=self.master.showFileSelect)
         self.button1.pack(side=tk.LEFT, expand=True, fill="both", padx=10)
 
-        self.button2 = tk.Button(self.button_frame, text='Quit', font=12, fg='black', highlightbackground='#262626', width=button_width, command=self.quit)
+        self.button2 = tk.Button(self.button_frame, text='Quit', height=1, font=12, fg='black', highlightbackground='#262626', width=button_width, command=self.quit)
         self.button2.pack(side=tk.RIGHT, expand=True, fill="both", padx=10)
 
     def quit(self):
@@ -54,16 +54,16 @@ class Name(tk.Frame):
         self.label_ = tk.Label(self, text=f"output folder : {self.dir_path}", height=1, font=12, fg='white', bg='#383838')
         self.label_.pack()
 
-        self.button = tk.Button(self, text='Choose', width=7, font=12, fg='black', highlightbackground='#383838', comman=self.choose)
+        self.button = tk.Button(self, text='Choose', height=1, width=7, font=12, fg='black', highlightbackground='#383838', comman=self.choose)
         self.button.pack(expand=True)
 
-        self.button1 = tk.Button(self, text='Enter', width=7, font=12, fg='black', highlightbackground='#383838', comman=self.enter)
+        self.button1 = tk.Button(self, text='Enter', height=1, width=7, font=12, fg='black', highlightbackground='#383838', comman=self.enter)
         self.button1.pack(expand=True)
 
-        self.button2 = tk.Button(self, text='Option', width=7, font=12, fg='black', highlightbackground='#383838', command=self.master.showOptionSelect)
+        self.button2 = tk.Button(self, text='Option', height=1, width=7, font=12, fg='black', highlightbackground='#383838', command=self.master.showOptionSelect)
         self.button2.pack(expand=True)
 
-        self.button3 = tk.Button(self, text='Select', width=7, font=12, fg='black', highlightbackground='#383838', command=self.master.showFileSelect)
+        self.button3 = tk.Button(self, text='Select', height=1, width=7, font=12, fg='black', highlightbackground='#383838', command=self.master.showFileSelect)
         self.button3.pack(expand=True)
 
     def choose(self):
@@ -92,10 +92,10 @@ class Error(tk.Frame):
 
         button_width = 5
 
-        self.button1 = tk.Button(self.button_frame, text='Select', font=12, fg='black', highlightbackground='#383838', width=button_width, command=self.master.showFileSelect)
+        self.button1 = tk.Button(self.button_frame, text='Select', height=1, font=12, fg='black', highlightbackground='#383838', width=button_width, command=self.master.showFileSelect)
         self.button1.pack(side=tk.LEFT, expand=True, fill="both", padx=10)
 
-        self.button2 = tk.Button(self.button_frame, text='Quit', font=12, fg='black', highlightbackground='#383838', width=button_width, command=self.quit)
+        self.button2 = tk.Button(self.button_frame, text='Quit', height=1, font=12, fg='black', highlightbackground='#383838', width=button_width, command=self.quit)
         self.button2.pack(side=tk.RIGHT, expand=True, fill="both", padx=10)
 
     def quit(self):
@@ -111,7 +111,7 @@ class OptionSelect(tk.Frame):
         self.master.label_.configure(bg='#A6A6A6')
         self.configure(background='#F2F2F2')
 
-        self.label = tk.Label(self, text="Choose the option", height=1, font=12, fg='black', bg='#F2F2F2')
+        self.label = tk.Label(self, text="Choose the option (default = 'All species')", height=1, font=12, fg='black', bg='#F2F2F2')
         self.label.pack()
         self.label_ = tk.Label(self, text="options :", height=1, font=12, fg='black', bg='#F2F2F2')
         self.label_.pack()
@@ -142,13 +142,13 @@ class OptionSelect(tk.Frame):
         
         for index, row in self.df.iterrows():
             button = tk.Button(self.scrollable_frame, text=f"{row['option']} ({row['count']})",
-                               font=12, highlightbackground='#F2F2F2', fg='black', width=10,
+                               font=12, highlightbackground='#F2F2F2', fg='black', width=10, height=1,
                                command=lambda idx=index: self.on_button_click(idx+1))
-            button.pack(fill="x", pady=5)
+            button.pack(fill="x", padx=5, pady=5)
             self.buttons.append(button)
 
-        self.select_button = tk.Button(self, text="Select (or 'All species')", width=15, font=12, highlightbackground='#F2F2F2', fg='black', command=self.name)
-        self.select_button.pack(expand=True, pady=20)
+        self.select_button = tk.Button(self, text="Select", width=15, height=1, font=12, highlightbackground='#F2F2F2', fg='black', command=self.name)
+        self.select_button.pack(expand=True, padx=5, pady=20)
 
     def on_button_click(self, idx):
         button = self.buttons[idx-1]
@@ -189,13 +189,13 @@ class FileSelect(tk.Frame):
         self.label1 = tk.Label(self, text='Select the input file', font=12, height=1, fg='black', bg='#F2F2F2')
         self.label1.grid(row=1, column=1, padx=200, pady=30)
 
-        self.button1 = tk.Button(self, text='Upload', width=1, font=12, highlightbackground='#F2F2F2', fg='black', command=self.selectFile)
+        self.button1 = tk.Button(self, text='Upload', width=1, height=1, font=12, highlightbackground='#F2F2F2', fg='black', command=self.selectFile)
         self.button1.grid(row=5, column=1, ipadx=40, padx=10, pady=20)
 
         self.label2 = tk.Label(self, text='', font=12, height=1, fg='black', bg='#F2F2F2')
         self.label2.grid(row=6, column=1, ipadx=40, padx=10, pady=20)
 
-        self.button2 = tk.Button(self, text='Next', width=1, font=12, highlightbackground='#F2F2F2', fg='black', command=self.optionSelect)
+        self.button2 = tk.Button(self, text='Next', width=1, height=1, font=12, highlightbackground='#F2F2F2', fg='black', command=self.optionSelect)
         self.button2.grid(row=7, column=1, ipadx=40, padx=10, pady=20)
 
     def selectFile(self):
@@ -233,7 +233,7 @@ class Program(tk.Tk):
         self.label_ = tk.Label(self, text="sseouea03@gmail.com", height=1, font=12, fg='white', background='#262626', compound='bottom')
         self.label_.pack(side=tk.BOTTOM, fill=tk.X)
 
-        self.button = tk.Button(self, text='Start', background='white', width=3, font=12, fg='black', highlightbackground='#262626', command=self.showFileSelect)
+        self.button = tk.Button(self, text='Start', background='white', width=5, height=1, font=12, fg='black', highlightbackground='#262626', command=self.showFileSelect)
         self.button.pack(expand=True, pady=5)
 
         self.manager = DFmanager()
