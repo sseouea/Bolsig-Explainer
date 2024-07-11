@@ -1,0 +1,3 @@
+([('run',
+   '/Users/kimseohyun/Documents/Github/Bolsig-Explainer/dist/run',
+   'EXECUTABLE')],)
