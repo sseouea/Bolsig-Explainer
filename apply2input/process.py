@@ -42,7 +42,7 @@ def processInput(filePath):
 
     # check the extension of file
     ################################################
-    extension = filePath.split('.')
+    extension = filePath.split('.')[-1]
     if extension not in ['txt', 'dat']:
         raise Exception('InvalidFileExtensionError')
     ################################################
