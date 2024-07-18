@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 from functions import *
 
-class DFmanager:
+class iManager:
     def __init__(self):
         self.filePath = None
         self.savePath = None

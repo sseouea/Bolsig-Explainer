@@ -3,10 +3,13 @@ from pathlib import Path
 import pandas as pd
 from functions import *
 
-class DFmanager:
+class iManager:
     def __init__(self):
+        # FilePath
         self.filePath = None
         self.savePath = None
+
+        # DataFrame
         self.originDF = None
         self.countDF = None
         self.optionDF = None
