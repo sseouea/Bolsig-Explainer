@@ -55,7 +55,7 @@ def processInput(filePath):
         f = open(filePath, 'r')
     ################################################
 
-    state = ['ELASTIC', 'EFFECTIVE', 'MOMENTUM', 'IONIZATION', 'ATTACHMENT', 'EXCITATION']
+    state = ['ELASTIC', 'EFFECTIVE', 'MOMENTUM', 'IONIZATION', 'ATTACHMENT', 'EXCITATION', 'ROTATIONAL', 'VIBRATIONAL']
     columns = ['state', 'equation', 'value', 'species', 'process', 'param.', 'comment', 'updated']
 
     data = {c : list() for c in columns}

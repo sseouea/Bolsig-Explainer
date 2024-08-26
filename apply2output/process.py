@@ -15,7 +15,7 @@ def getData(dataType, lineIdx, lines):
   else:
     raise Exception('InvalidDataFrameTypeError')
 
-def processOnput(filePath):
+def processOutput(filePath):
     # make .csv with output file (.dat)
 
     # check the extension of file
