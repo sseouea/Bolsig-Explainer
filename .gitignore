@@ -1,4 +1,5 @@
 run.spec
 __pycache__
-/dist
 /build
+/dist
+bolos-master
