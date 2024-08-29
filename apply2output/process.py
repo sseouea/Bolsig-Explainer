@@ -1,6 +1,6 @@
 import pandas as pd
 import platform
-from extract import *
+from .extract import *
 
 # return (a) data (b) finished line (included in dataframe)
 def getData(dataType, lineIdx, lines):

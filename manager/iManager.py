@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 import pandas as pd
-from ..utils import *
+from utils import *
 
 class iManager:
     def __init__(self):

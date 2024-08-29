@@ -1,2 +1,2 @@
-from iManager import *
-from oManager import *
+from .iManager import *
+from .oManager import *

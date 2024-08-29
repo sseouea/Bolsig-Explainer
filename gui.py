@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import os
-from DFmanager import *
+from manager.manager import *
 import sys
 from tkinter import font
 
@@ -243,7 +243,7 @@ class Program(tk.Tk):
         self.button = tk.Button(self, text='Start', background='white', width=5, height=1, font=self.font, fg='black', highlightbackground='#262626', command=self.showFileSelect)
         self.button.pack(expand=True, pady=5)
 
-        self.manager = DFmanager()
+        self.manager = iManager()
         self.fileSelect = None
         self.options = list()
         self.optionSelect = None
