@@ -40,9 +40,10 @@ class oManager:
         _path = '.'.join(path.split('.')[:-1])
         self.savePath = _path
         if ext == 'dat':
-            _path = _path + '.txt'
-            os.rename(path, _path)
-            self.filePath = _path
+            # _path = _path + '.txt'
+            # os.rename(path, _path)
+            # self.filePath = _path
+            self.filePath = path
         elif ext == 'txt':
             self.filePath = path
         else:
@@ -67,7 +68,7 @@ class oManager:
     
     # 3. Save DataFrame
 
-    def saveDF(self, type='all'):
+    def saveDF(self, dataType='all'):
         if self.savePath == None:
             raise Exception('EmptyFilePathError')
         if self.processedDF == None:
@@ -76,13 +77,23 @@ class oManager:
         filePath = self.savePath
         os.makedirs('/'.join(filePath.split('/')[:-1]), exist_ok=True)
 
-        if type == 'all':
-            for key in self.processedDF.keys:
-                self.processedDF[key].to_csv(self.savePath + f'{key}.csv', index = False)
+        if dataType == 'all':
+            for key in self.processedDF.keys():
+                if type(self.processedDF[key]) != type(pd.DataFrame()):
+                    continue
+                if type(self.processedDF[key]) == list:
+                    continue
+
+                name = key.replace('/', ';')
+                self.processedDF[key].to_csv(self.savePath + f'({name}).csv', index = False)
         else:
-            if type not in self.processedDF.keys:
+            if dataType not in self.processedDF.keys():
                 raise Exception('InvalidKeyError')
-            self.processedDF[type].to_csv(self.savePath + f'{type}.csv', index = False)
+            if type(self.processedDF[dataType]) != type(pd.DataFrame()):
+                raise Exception('InvalidOption')
+            
+            name = dataType.replace('/', ';')
+            self.processedDF[dataType].to_csv(self.savePath + f'({name}).csv', index = False)
 
         return True
   
