@@ -11,8 +11,8 @@ class ErrorPage(tk.Frame):
         self.errorLabel.place(relx=0.5, rely=0.4, anchor='center')
 
         # button
-        self.backBtn = tk.Button(self, text='Back', bg='white', highlightbackground='#262626', command=showPrevPage, width=15)
+        self.backBtn = tk.Button(self, text='Back', bg='white', command=showPrevPage, width=15)
         self.backBtn.place(relx=0.3, rely=0.6, anchor='center')
 
-        self.exitBtn = tk.Button(self, text='Exit', bg='white', highlightbackground='#262626', command=self.master.exitProgram, width=15)
+        self.exitBtn = tk.Button(self, text='Exit', bg='white', command=self.master.exitProgram, width=15)
         self.exitBtn.place(relx=0.7, rely=0.6, anchor='center')

@@ -21,9 +21,15 @@ class OptionPage(tk.Frame):
                 self.df = self.df.rename(columns={'option' : 'key', 'count' : 'value'})
             
         elif self.fileType == 'output':
-            self.df = pd.DataFrame({'key' : ['Input cross section', 'Conditions', 'Rate coefficients (m3/s)', 'Energy loss coefficients (eV m3/s)', 'Inverse rate coefficients (m3/s)', 'Transport coefficients'],
-                                    'value' : [None]*6})
+            self.df = pd.DataFrame({'key' : ['Input cross section', 'Conditions', 'Rate coefficients (m3/s)', 'Energy loss coefficients (eV m3/s)', 'Inverse rate coefficients (m3/s)', 'Transport coefficients'], 'value' : [None]*6})
+            self.manager.setProcessedDF()
+            for key in self.manager.processedDF:
+                if type(self.manager.processedDF[key]) == type(None):
+                    self.df[key] = False
+                else:
+                    self.df[key] = True
         
+
         # label
         self.header = tk.Label(self, text="Choose the options (default = 'All species/types')")
         self.header.pack(pady=(50,0))
@@ -32,7 +38,7 @@ class OptionPage(tk.Frame):
         self.optionLabel.pack(pady=5)
 
         # scroll
-        # self.scrollbar = tk.Scrollbar(self.canvas, orient="vertical", command=self.canvas.yview)
+        # self.scrollbar = tk.Scrollbr(self.canvas, orient="vertical", command=self.canvas.yview)
         self.innerFrame = tk.Frame(self)
 
         self.canvas = tk.Canvas(self.innerFrame)
@@ -71,30 +77,34 @@ class OptionPage(tk.Frame):
         for index, row in self.df.iterrows():
             if self.fileType == 'input':
                 btn = tk.Button(self.scrollFrame, text=f"{row['key']} ({row['value']})",
-                                highlightbackground='#F2F2F2', width=self.btnWidth,
+                                width=self.btnWidth,
                                 command=lambda idx=index: self.on_button_click(idx+1))
             elif self.fileType == 'output':
-                btn = tk.Button(self.scrollFrame, text=f"{row['key']}",
-                                highlightbackground='#F2F2F2', width=self.btnWidth,
+                if row[row['key']]:
+                    btn = tk.Button(self.scrollFrame, text=f"{row['key']}",
+                                width=self.btnWidth,
                                 command=lambda idx=index: self.on_button_click(idx+1))
-                
+                else:
+                    btn = tk.Button(self.scrollFrame, text=f"{row['key']}",
+                                width=self.btnWidth, bg='gray70', disabledforeground='white', state='disabled',
+                                command=lambda idx=index: self.on_button_click(idx+1))
             btn.grid(row=index//self.colCnt, column=index%self.colCnt, padx=5, pady=5)
             self.btnList.append(btn)
 
-        self.backBtn = tk.Button(self, text='Back', bg='white', highlightbackground='#262626', command=self.master.showFileLoadPage, width=15)
+        self.backBtn = tk.Button(self, text='Back', bg='white', command=self.master.showFileLoadPage, width=15)
         self.backBtn.place(relx=0.3, rely=0.9, anchor='center')
 
-        self.nextBtn = tk.Button(self, text='Next', bg='white', highlightbackground='#262626', command=self.nextPage, width=15)
+        self.nextBtn = tk.Button(self, text='Next', bg='white', command=self.nextPage, width=15)
         self.nextBtn.place(relx=0.7, rely=0.9, anchor='center')
 
     def on_button_click(self, idx):
         button = self.btnList[idx-1]
         if idx in self.master.options[self.fileType]:
             self.master.options[self.fileType].remove(idx)
-            button.configure(highlightbackground='#F2F2F2', fg='black')
+            button.configure(bg='#F2F2F2', fg='black')
         else:
             self.master.options[self.fileType].append(idx)
-            button.configure(highlightbackground='#F2F2F2', fg='light gray')
+            button.configure(bg='#F2F2F2', fg='light gray')
             
         button.grid(row=(idx-1)//self.colCnt, column=(idx-1)%self.colCnt, padx=5, pady=5)
         self.master.options[self.fileType].sort()

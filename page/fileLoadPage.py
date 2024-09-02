@@ -21,10 +21,10 @@ class FileLoadPage(tk.Frame):
         self.loadBtn = tk.Button(self, text=f'Load {self.fileType} file', bg='white', highlightbackground='#262626', command=self.selectFile, width=20)
         self.loadBtn.place(relx=0.5, rely=0.5, anchor='center')
 
-        self.backBtn = tk.Button(self, text='Back', bg='white', highlightbackground='#262626', command=self.master.showMainPage, width=15)
+        self.backBtn = tk.Button(self, text='Back', bg='white', command=self.master.showMainPage, width=15)
         self.backBtn.place(relx=0.3, rely=0.9, anchor='center')
 
-        self.nextBtn = tk.Button(self, text='Next', bg='white', highlightbackground='#262626', command=self.nextPage, width=15)
+        self.nextBtn = tk.Button(self, text='Next', bg='white', command=self.nextPage, width=15)
         self.nextBtn.place(relx=0.7, rely=0.9, anchor='center')
 
         
@@ -39,7 +39,9 @@ class FileLoadPage(tk.Frame):
             self.pathLabel.configure(text=f'File path: {self.file.name}')
     
     def nextPage(self):
-            if self.file == None or self.file.name.split('.')[-1] not in ['txt', 'dat']:
+            if self.file == None:
+                self.master.showErrorPage("No file selected", self.master.showFileLoadPage)
+            elif self.file.name.split('.')[-1] not in ['txt', 'dat']:
                 self.master.showErrorPage("The file extension must be 'txt' or 'dat'", self.master.showFileLoadPage)
             else:
                 self.master.manager.setFilePath(self.file.name)

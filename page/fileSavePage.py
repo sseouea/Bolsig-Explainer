@@ -14,13 +14,13 @@ class FileSavePage(tk.Frame):
         self.pathLabel = tk.Label(self, text=f"Result folder: {self.dir_path}")
         self.pathLabel.pack(pady=5)
 
-        self.saveBtn = tk.Button(self, text='Change the path to save', width=25, bg='white', highlightbackground='#383838', command=self.selectFolder)
+        self.saveBtn = tk.Button(self, text='Change the path to save', width=25, bg='white', command=self.selectFolder)
         self.saveBtn.place(relx=0.5, rely=0.5, anchor='center')
 
-        self.backBtn = tk.Button(self, text='Back', bg='white', highlightbackground='#262626', command=self.master.showOptionPage, width=15)
+        self.backBtn = tk.Button(self, text='Back', bg='white', command=self.master.showOptionPage, width=15)
         self.backBtn.place(relx=0.3, rely=0.9, anchor='center')
 
-        self.nextBtn = tk.Button(self, text='Next', bg='white', highlightbackground='#262626', command=self.nextPage, width=15)
+        self.nextBtn = tk.Button(self, text='Next', bg='white', command=self.nextPage, width=15)
         self.nextBtn.place(relx=0.7, rely=0.9, anchor='center')
 
     def selectFolder(self):

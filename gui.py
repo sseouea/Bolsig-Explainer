@@ -1,6 +1,4 @@
 import tkinter as tk
-from tkinter import filedialog
-import os
 from manager.manager import *
 from page.pages import *
 import sys
@@ -37,7 +35,7 @@ class Program(tk.Tk):
         # self.bg = '#F5F5F5'
         # self.configure(background=self.bg)
 
-        self.header = tk.Label(self, text='Title!!')
+        self.header = tk.Label(self, text='Bolsig+ | Explainer')
         self.header.place(relx=0.5, rely=0.2, anchor='center')
 
         self.footer = tk.Label(self, text="ver 1.6 | sseouea03@gmail.com", fg='white', bg='#262626', anchor='e', padx=15)
@@ -60,13 +58,13 @@ class Program(tk.Tk):
     def showMainPage(self):
         self.clean()
 
-        self.inputBtn = tk.Button(self, text='Select Input File', bg='white', width=20, highlightbackground='#262626', command=self.showInputFileLoadPage)
+        self.inputBtn = tk.Button(self, text='Select Input File', bg='white', width=20, command=self.showInputFileLoadPage)
         self.inputBtn.pack(pady=(200, 10))
 
-        self.outputBtn = tk.Button(self, text='Select Output File', bg='white', width=20, highlightbackground='#262626', command=self.showOutputFileLoadPage)
+        self.outputBtn = tk.Button(self, text='Select Output File', bg='white', width=20, command=self.showOutputFileLoadPage)
         self.outputBtn.pack(pady=10)
 
-        self.exitBtn = tk.Button(self, text='Exit', bg='white', width=20, highlightbackground='#262626', command=self.exitProgram)
+        self.exitBtn = tk.Button(self, text='Exit', bg='white', width=20, command=self.exitProgram)
         self.exitBtn.pack(pady=10)
 
     def showInputFileLoadPage(self):
