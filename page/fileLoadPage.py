@@ -18,7 +18,7 @@ class FileLoadPage(tk.Frame):
         self.pathLabel.pack(pady=5)
         
         # button
-        self.loadBtn = tk.Button(self, text=f'Load {self.fileType} file', bg='white', highlightbackground='#262626', command=self.selectFile, width=20)
+        self.loadBtn = tk.Button(self, text=f'Load {self.fileType} file', bg='white', command=self.selectFile, width=20)
         self.loadBtn.place(relx=0.5, rely=0.5, anchor='center')
 
         self.backBtn = tk.Button(self, text='Back', bg='white', command=self.master.showMainPage, width=15)

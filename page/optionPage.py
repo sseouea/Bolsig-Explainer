@@ -77,16 +77,16 @@ class OptionPage(tk.Frame):
         for index, row in self.df.iterrows():
             if self.fileType == 'input':
                 btn = tk.Button(self.scrollFrame, text=f"{row['key']} ({row['value']})",
-                                width=self.btnWidth,
+                                width=self.btnWidth, highlightbackground='white',
                                 command=lambda idx=index: self.on_button_click(idx+1))
             elif self.fileType == 'output':
                 if row[row['key']]:
                     btn = tk.Button(self.scrollFrame, text=f"{row['key']}",
-                                width=self.btnWidth,
+                                width=self.btnWidth, highlightbackground='white',
                                 command=lambda idx=index: self.on_button_click(idx+1))
                 else:
-                    btn = tk.Button(self.scrollFrame, text=f"{row['key']}",
-                                width=self.btnWidth, bg='gray70', disabledforeground='white', state='disabled',
+                    btn = tk.Button(self.scrollFrame, text=f"{row['key']}", highlightbackground='white',
+                                width=self.btnWidth, bg='gray40', disabledforeground='light gray', state='disabled',
                                 command=lambda idx=index: self.on_button_click(idx+1))
             btn.grid(row=index//self.colCnt, column=index%self.colCnt, padx=5, pady=5)
             self.btnList.append(btn)
@@ -104,7 +104,7 @@ class OptionPage(tk.Frame):
             button.configure(bg='#F2F2F2', fg='black')
         else:
             self.master.options[self.fileType].append(idx)
-            button.configure(bg='#F2F2F2', fg='light gray')
+            button.configure(bg='gray70', fg='light gray')
             
         button.grid(row=(idx-1)//self.colCnt, column=(idx-1)%self.colCnt, padx=5, pady=5)
         self.master.options[self.fileType].sort()
