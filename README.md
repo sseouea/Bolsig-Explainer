@@ -14,6 +14,12 @@ The program is for processing the .csv / .dat file using on Bolsig+ including in
   - ```Energy loss coefficients``` : exactly not included on output file, the program automatically calculate the value through given data (rate coefficients)
 
 </br>
+
+## Release
+
+The program is exist in ```release``` folder. There are executable file for Window64 and Mac for each folder in release folder.
+
+</br>
  
 ## Result
 
