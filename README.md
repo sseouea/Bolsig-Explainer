@@ -19,6 +19,9 @@ The program is for processing the .csv / .dat file using on Bolsig+ including in
 
 The program is exist in ```release``` folder. There are executable file for Window64 and Mac for each folder in release folder.
 
+* If you just want to execute the program, use the below command. </br>
+```python run.py```
+
 </br>
  
 ## Result
