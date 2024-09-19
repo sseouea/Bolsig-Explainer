@@ -49,6 +49,9 @@ def getOptionsInfo(df):
                 countData[option] = 1
 
             newDF.loc[idx, f'option{i+1}'] = option
+    
+    if 'option2' not in newDF.columns:
+      newDF['option2'] = ''
 
     _countData = {'option' : list(countData.keys()), 'count' : list(countData.values())}
     countDF = pd.DataFrame(_countData)
